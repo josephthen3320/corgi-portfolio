@@ -1,8 +1,8 @@
 'use client';
-import { useState } from 'react';
-import Link from 'next/link';
-import Typewriter from 'typewriter-effect';
-import { FaBars, FaTimes } from 'react-icons/fa';
+//import { useState } from 'react';
+//import Link from 'next/link';
+//import Typewriter from 'typewriter-effect';
+//import { FaBars, FaTimes } from 'react-icons/fa';
 
 
 export function TitleBlock({ title, subtitle }: { title: string, subtitle: string }) {
