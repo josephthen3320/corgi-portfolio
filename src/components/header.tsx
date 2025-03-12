@@ -43,7 +43,7 @@ export function Header({ navLinks }: { navLinks: { href: string; title: string }
                     isMenuOpen ? 'block' : 'hidden'
                 } absolute left-0 right-0 top-[70px] md:block md:flex md:space-x-4 md:justify-center md:relative md:top-0 md:left-0 md:right-0`}
             >
-                <div className="flex flex-col md:flex-row space-y-4 md:space-y-0 md:space-x-4 w-full bg-white md:bg-transparent md:text-gray-900 dark:bg-black dark:text-gray-100 p-2.5">
+                <div className="flex flex-col md:flex-row space-y-4 md:space-y-0 md:space-x-4 w-full md:bg-transparent md:text-gray-900  dark:text-gray-100 p-2.5">
                     {navLinks.map((link) => (
                         <Link
                             key={link.title}

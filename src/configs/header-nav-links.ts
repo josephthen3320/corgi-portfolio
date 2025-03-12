@@ -1,6 +1,6 @@
 export const headerNavLinks = [
-    { href: '/blog', title: 'Photo Series' },
-    { href: '/tags', title: 'Photography' },
+    // { href: '/blog', title: 'Photo Series' },
+    { href: '/photography', title: 'Photography' },
     { href: '/projects', title: 'Projects' },
-    { href: '/publications', title: 'About' }
+    { href: '/about', title: 'About' }
 ]

@@ -4,15 +4,19 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
+    "dev-t": "next dev -t",
     "build": "next build",
     "start": "next start",
     "lint": "next lint"
   },
   "dependencies": {
+    "@types/react-modal": "^3.16.3",
     "next": "15.2.2",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "react-icons": "^5.5.0",
+    "react-modal": "^3.16.3",
+    "react-photo-gallery": "^8.0.0",
     "typewriter-effect": "^2.21.0"
   },
   "devDependencies": {
