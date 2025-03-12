@@ -4,29 +4,43 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { TitleBlock } from '@/components/titleBlock';
 
+// Define a type for the photo object
+type Photo = {
+    slug: string;
+    src: string;
+    alt: string;
+    title: string;
+    description: string;
+    idc: string;
+    width: number;
+    height: number;
+};
+
 export default function Photography() {
     const photosDir = path.join(process.cwd(), 'public/photos');
     const filenames = fs.readdirSync(photosDir);
 
     // Map through the filenames and create a photo object with fallback properties
-    const photos = filenames.map((filename) => {
-        const extension = path.extname(filename);
+    const photos: Photo[] = filenames
+        .map((filename) => {
+            const extension = path.extname(filename);
 
-        // Check if it's an image file
-        if (['.jpg', '.jpeg', '.png', '.gif'].includes(extension.toLowerCase())) {
-            return {
-                slug: filename.replace(extension, ''), // Remove file extension for the slug
-                src: `/photos/${filename}`, // Image source
-                alt: filename.replace(extension, '').replace(/[-_]/g, ' '), // Fallback alt text based on filename
-                title: filename.replace(extension, '').replace(/[-_]/g, ' '), // Fallback title based on filename
-                description: 'No description available', // Fallback description
-                idc: filename.replace(extension, ''), // Using filename as the id for URL
-                width: 720, // Default width (can be dynamically adjusted)
-                height: 480, // Default height (can be dynamically adjusted)
-            };
-        }
-        return null; // Skip non-image files
-    }).filter(Boolean); // Remove null entries for non-image files
+            // Check if it's an image file
+            if (['.jpg', '.jpeg', '.png', '.gif'].includes(extension.toLowerCase())) {
+                return {
+                    slug: filename.replace(extension, ''), // Remove file extension for the slug
+                    src: `/photos/${filename}`, // Image source
+                    alt: filename.replace(extension, '').replace(/[-_]/g, ' '), // Fallback alt text based on filename
+                    title: filename.replace(extension, '').replace(/[-_]/g, ' '), // Fallback title based on filename
+                    description: 'No description available', // Fallback description
+                    idc: filename.replace(extension, ''), // Using filename as the id for URL
+                    width: 720, // Default width (can be dynamically adjusted)
+                    height: 480, // Default height (can be dynamically adjusted)
+                };
+            }
+            return null; // Skip non-image files
+        })
+        .filter((photo): photo is Photo => photo !== null); // Remove null entries and assert type
 
     return (
         <>
