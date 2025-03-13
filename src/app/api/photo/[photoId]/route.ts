@@ -9,7 +9,7 @@ export async function GET(
     try {
         const { photoId } = await params;
         const photosDir = path.join(process.cwd(), 'public/photos');
-        const extensions = ['.jpg', '.jpeg', '.png', '.gif', '.JPG', '.JPEG', '.PNG', '.GIF'];
+        const extensions = ['.jpg', '.jpeg', '.png', '.gif'];
 
         // Find the correct file extension
         for (const ext of extensions) {
