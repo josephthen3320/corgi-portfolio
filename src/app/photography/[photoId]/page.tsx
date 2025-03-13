@@ -45,14 +45,14 @@ export default function PhotoPage({ params }: { params: Promise<{ photoId: strin
                 <div className="w-16" /> {/* Placeholder to balance flex spacing */}
             </div>
 
-            {/* Main Image (75% Screen Height) */}
-            <div className="flex items-center justify-center h-[60vh]">
+            {/* Main Image */}
+            <div className="flex items-center justify-center md:h-[60vh]">
                 <Image
                     src={photoSrc}
                     alt={photoId.replace(/[-_]/g, ' ')}
                     width={1080}
                     height={720}
-                    className="h-[60vh] w-auto cursor-pointer transition-transform duration-300 hover:scale-[102%] border-2 border-gray-800"
+                    className="max-h-full max-w-full object-contain cursor-pointer transition-transform duration-300 hover:scale-[101%] border-2 border-gray-800"
                     onClick={() => setIsModalOpen(true)}
                 />
             </div>
