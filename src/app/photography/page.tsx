@@ -50,44 +50,39 @@ export default function Photography() {
             />
 
             <div className="container py-12">
-                <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-4 mb-5">
+                <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-3 gap-4">
                     {photos.map((photo, index) => (
                         <div
                             key={photo.slug}
-                            className="relative group"
+                            className="relative group overflow-hidden rounded-lg"
+                            style={{
+                                aspectRatio: `${photo.width} / ${photo.height}`, // Maintain natural aspect ratio
+                            }}
                         >
-                            <div className="relative group hover:brightness-150 transition duration-200 group-hover:shadow-lg hover:shadow-gray-900/90 border-2 border-zinc-500/20 hover:border-zinc-500/70 rounded-sm">
-                                <Link href={`/photography/${photo.idc}`} scroll={false} className="grid place-content-center">
-                                    <Image
-                                        src={photo.src}
-                                        alt={photo.alt}
-                                        width={720}
-                                        height={0}
-                                        quality={80}
-                                        className="rounded-sm object-cover w-full h-auto" // Ensures image covers the space while maintaining aspect ratio
-                                        loading={index < 10 ? 'eager' : 'lazy'}
-                                        sizes="(max-width: 640px) 100vw, (max-width: 1280px) 50vw, (max-width: 1536px) 33vw, 25vw"
-                                    />
+                            <Link href={`/photography/${photo.idc}`} scroll={false}>
+                                {/* Image */}
+                                <Image
+                                    src={photo.src}
+                                    alt={photo.alt}
+                                    width={photo.width}
+                                    height={photo.height}
+                                    quality={80}
+                                    className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+                                    loading={index < 10 ? 'eager' : 'lazy'}
+                                />
 
-                                    {/* Overlay background (semi-transparent) */}
-                                    <div className="absolute inset-0 bg-black bg-opacity-50 opacity-0 group-hover:opacity-80 transition duration-200 rounded-sm"></div>
+                                {/* Overlay for hover effect */}
+                                <div className="absolute inset-0 bg-black bg-opacity-50 opacity-0 group-hover:opacity-80 transition"></div>
 
-                                    {/* Text overlay */}
-                                    <div>
-                                        <p className="text-xs absolute bottom-1 text-white px-2 transition duration-200 opacity-70 md:opacity-0 group-hover:opacity-75">
-                                            {photo.title}
-                                            {/*
-                                            <span className="text-xs font-light line-clamp-1 block opacity-75">
-                                                {photo.description}
-                                            </span>
-                                            */}
-                                        </p>
-                                    </div>
-                                </Link>
-                            </div>
+                                {/* Title appears only on hover */}
+                                <p className="absolute bottom-2 left-2 right-2 text-white text-sm px-3 opacity-0 group-hover:opacity-100 transition duration-300">
+                                    {photo.title}
+                                </p>
+                            </Link>
                         </div>
                     ))}
                 </div>
+
             </div>
         </>
     );
