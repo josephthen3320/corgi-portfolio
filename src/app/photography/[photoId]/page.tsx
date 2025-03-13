@@ -26,7 +26,7 @@ export default function PhotoPage({ params }: { params: Promise<{ photoId: strin
     }, [photoId]);
 
     if (!photoSrc) {
-        return <div className="text-white text-center mt-20">Loading...</div>;
+        return <div className="text-white text-center mt-20">Fetching the image for you! <br/> ദ്ദി •⩊• ) </div>;
     }
 
     return (
