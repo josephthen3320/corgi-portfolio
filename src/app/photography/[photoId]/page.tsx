@@ -41,6 +41,7 @@ export default function PhotoPage({ params }: { params: Promise<{ photoId: strin
                         .replace(/[-_]/g, ' ') // Replace hyphens/underscores with spaces
                         .replace(/\b\w/g, (char) => char.toUpperCase())} {/* Capitalize first letter of each word */}
                 </span>
+                <span>{photoSrc}</span>
                 <div className="w-16" /> {/* Placeholder to balance flex spacing */}
             </div>
 
