@@ -76,7 +76,10 @@ export default function Photography() {
 
                                 {/* Title appears only on hover */}
                                 <p className="absolute bottom-2 left-2 right-2 text-white text-sm px-3 opacity-0 group-hover:opacity-100 transition duration-300">
-                                    {photo.title}
+                                    {photo.title
+                                        .replace(/[-_]/g, ' ') // Replace hyphens/underscores with spaces
+                                        .replace(/\b\w/g, (char) => char.toUpperCase())
+                                    } {/* Capitalize first letter of each word */}
                                 </p>
                             </Link>
                         </div>
